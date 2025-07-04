@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  labelSecondary: string = "Criar Conta"
+  labelPrimary: string = "Acessar"
+
 }
