@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../material/material.module';
+
 import { ButtonSecondaryComponent } from './button-secondary/button-secondary.component';
 import { ButtonPrimaryComponent } from './button-primary/button-primary.component';
 
 
-
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MaterialModule
   ],
   declarations: [
     ButtonPrimaryComponent,
@@ -15,7 +17,7 @@ import { ButtonPrimaryComponent } from './button-primary/button-primary.componen
   ],
   exports: [
     ButtonPrimaryComponent,
-    ButtonSecondaryComponent
+    ButtonSecondaryComponent,
   ]
 })
 export class SharedModule { }

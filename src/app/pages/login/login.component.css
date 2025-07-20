@@ -1,21 +1,3 @@
-input {
-  font-size: 13px;
-
-  &[type="text"] {
-    width: 400px;
-    height: 40px;
-  }
-
-  &[type="password"] {
-    width: 400px;
-    height: 40px;
-  }
-}
-
-label {
-  font-size: 13px;
-}
-
 mat-form-field {
   width: 400px;
 }
@@ -54,11 +36,6 @@ mat-form-field {
 
 ::ng-deep .mdc-notched-outline__notch {
   border-right: none !important;
-  width: 90px !important;
-}
-
-::ng-deep .mdc-notched-outline__trailing {
-  width: auto !important;
 }
 
 ::ng-deep .mat-mdc-form-field-subscript-wrapper {

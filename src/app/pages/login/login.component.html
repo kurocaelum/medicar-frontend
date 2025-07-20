@@ -2,25 +2,24 @@
   <div>
     <img src="assets/logo.svg" alt="Logo medicar" class="mb-5">
 
-    
-
-    <mat-form-field appearance="outline" class="small-field">
-      <mat-label>Email ou Login</mat-label>
-      <input matInput>
-    </mat-form-field>
+    <p>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-label class="pr-5">Email ou Login</mat-label>
+        <input matInput>
+      </mat-form-field>
+    </p>
     <br>
 
-    <!-- <br>
-    <mat-form-field appearance="outline">
-      <mat-label>Email ou Login</mat-label>
-      <input matInput>
-    </mat-form-field>
-    <br> -->
-    
-    <input type="password" placeholder="Senha" class="border rounded border-gray my-5 p-2 focus:border-primary focus:outline-none focus:ring-0">
+    <!-- <input matInput [type]="hide() ? 'password' : 'text'" /> -->
+    <p>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-label class="pr-2">Senha</mat-label>
+        <input matInput [type]="'password'" />
+      </mat-form-field>
+    </p>
     <br>
-
-    <!-- Checkbox -->
+    
+    <!-- TODO Checkbox com material -->
     <div class="inline-flex items-center">
       <label class="flex items-center cursor-pointer relative" for="remember-password">
         <input type="checkbox"
@@ -42,8 +41,8 @@
     </div>
     <br>
 
-    <app-button-secondary [label]="labelSecondary"></app-button-secondary>
-    <app-button-primary [label]="labelPrimary"></app-button-primary>
+    <app-button-secondary [label]="'Criar Conta'"></app-button-secondary>
+    <app-button-primary [label]="'Acessar'"></app-button-primary>
 
   </div>
 </div>
