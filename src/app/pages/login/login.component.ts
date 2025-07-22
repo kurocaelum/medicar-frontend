@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+  hidePassword: boolean = false
+
+  public hide(): boolean {
+    if(!this.hidePassword) {
+      this.hidePassword = !this.hidePassword
+      return false
+    }
+
+    this.hidePassword = !this.hidePassword
+    return true
+  }
+
 }
