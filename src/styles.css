@@ -2,10 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 * {
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-form-field {
+  width: 400px;
+}
+
+.small-field .mat-mdc-form-field-flex {
+  height: 40px;
+}
+
+.small-field .mdc-text-field {
+  height: 40px;
+  min-height: 40px;
+}
+
+.small-field .mat-mdc-form-field-infix {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-height: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+}
+
+.mdc-floating-label {
+  color: #9ca3af !important;
+  font-size: 13px;
+}
+
+.mdc-floating-label:not(.mdc-floating-label--float-above) {
+  padding-bottom: 16px !important;
+}
+
+.mdc-notched-outline__leading {
+  width: 8px !important;
+}
+
+.mdc-notched-outline__notch {
+  border-right: none !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+  display: none !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-notched-outline__trailing {
+  border-color: #49b4bb !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  ):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  ):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  ):hover
+  .mdc-notched-outline
+  .mdc-notched-outline__trailing {
+  border-color: gray;
+}
