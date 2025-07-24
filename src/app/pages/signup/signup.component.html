@@ -1,0 +1,51 @@
+<div class="flex h-screen justify-center items-center">
+  <div>
+    <img src="assets/logo.svg" alt="Logo medicar" class="mb-5" />
+
+    <p class="font-bold text-lg text-black mb-5">Crie sua conta</p>
+
+    <p>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-label class="pr-2">Nome</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </p>
+    <br />
+
+    <p>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-label class="pr-2">Email</mat-label>
+        <input matInput />
+      </mat-form-field>
+    </p>
+    <br />
+
+    <p>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-label class="pr-2">Senha</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" />
+        <button matSuffix class="mr-3 text-gray" (click)="hide()">
+          <mat-icon
+            [fontIcon]="hide() ? 'visibility_off' : 'visibility'"
+          ></mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+    <br>
+    
+    <p>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-label class="pr-6">Confirmar Senha</mat-label>
+        <input matInput [type]="hideConfirm() ? 'password' : 'text'" />
+        <button matSuffix class="mr-3 text-gray" (click)="hideConfirm()">
+          <mat-icon
+            [fontIcon]="hideConfirm() ? 'visibility_off' : 'visibility'"
+          ></mat-icon>
+        </button>
+      </mat-form-field>
+    </p>
+
+    <app-button-secondary [label]="'Cancelar'"></app-button-secondary>
+    <app-button-primary [label]="'Confirmar'"></app-button-primary>
+  </div>
+</div>

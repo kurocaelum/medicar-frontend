@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../material/material.module';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -13,7 +14,8 @@ import { MaterialModule } from '../material/material.module';
     MaterialModule
   ],
   declarations: [
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   exports: [
     LoginComponent
