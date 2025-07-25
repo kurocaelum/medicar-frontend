@@ -1,0 +1,13 @@
+::ng-deep img {
+  width: 90px;
+  height: 25px;
+}
+
+.custom-container {
+  width: 627px;
+  margin: auto;
+}
+
+::ng-deep .custom-toolbar {
+  width: 103px;
+}
