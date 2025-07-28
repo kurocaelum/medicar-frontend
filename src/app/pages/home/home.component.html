@@ -1,21 +1,53 @@
 <div class="custom-container h-screen">
-  <mat-toolbar class="custom-toolbar bg-white">
+  <mat-toolbar class="bg-white">
     <img src="assets/logo.svg" alt="Logo medicar"/>
     <span class="text-gray ml-auto mr-10">Lucas Freitas</span>
-    <a routerLink="/" class="text-primary">Desconectar</a>
+    <a routerLink="/" class="text-primary ">Desconectar</a>
   </mat-toolbar>
   
   <mat-card>
     <mat-card-header class="mt-2">
-      <mat-card-title class="text-black">
+      <mat-card-title class="text-black pb-3">
         Consulta Clínica
       </mat-card-title>
       <button class="ml-auto px-5 rounded font-normal text-white bg-primary hover:bg-primary-hover focus:border-primary focus:outline-none focus:ring-0">+ Nova consulta</button>
     </mat-card-header>
 
-    <!-- TODO table -->
     <mat-card-content>
-      Kappa
+      <table mat-table [dataSource]="dataSource" class="striped-table">
+        <ng-container matColumnDef="especialidade">
+          <th mat-header-cell *matHeaderCellDef>ESPECIALIDADE</th>
+          <td mat-cell *matCellDef="let element">{{element.especialidade}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="profissional">
+          <th mat-header-cell *matHeaderCellDef>PROFISSIONAL</th>
+          <td mat-cell *matCellDef="let element">{{element.profissional}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="data">
+          <th mat-header-cell *matHeaderCellDef>DATA</th>
+          <td mat-cell *matCellDef="let element">{{element.data}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hora">
+          <th mat-header-cell *matHeaderCellDef>HORA</th>
+          <td mat-cell *matCellDef="let element">{{element.hora}}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let element"> 
+            <a routerLink="/home" class="text-primary flex items-center justify-center">
+              <mat-icon [fontIcon]="'close_small'" class="m-2"></mat-icon>
+              Desmarcar
+            </a> 
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
     </mat-card-content>
   </mat-card>
 

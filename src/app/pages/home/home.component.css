@@ -1,4 +1,10 @@
+.custom-container {
+  width: 45vw;
+  margin: auto;
+}
+
 mat-card {
+  width: 45vw;
   height: 90vh;
   box-shadow: 0px 1px 4px 0px #00000040;
 }
@@ -10,11 +16,7 @@ mat-card-title {
 
 mat-card-header button {
   font-size: 13px;
-}
-
-.custom-container {
-  width: 627px;
-  margin: auto;
+  height: 24px;
 }
 
 ::ng-deep img {
@@ -22,6 +24,33 @@ mat-card-header button {
   height: 25px;
 }
 
-::ng-deep .custom-toolbar {
-  width: 103px;
+::ng-deep .mat-mdc-header-row {
+  height: 0 !important;
+}
+
+::ng-deep .mat-mdc-header-cell {
+  font-weight: 700;
+  font-size: 12px;
+  color: #A8A8A8 !important;
+  border-bottom: 0 !important;
+}
+
+::ng-deep .mat-mdc-cell {
+  font-size: 13px;
+  border-bottom: 0 !important;
+}
+
+mat-icon {
+  font-weight: 800;
+  font-size: 13px;
+  width: 13px;
+  height: 13px;
+}
+
+.striped-table .mat-mdc-row:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+.striped-table .mat-mdc-row:nth-child(even) {
+  background-color: #F8F8F8;
 }
