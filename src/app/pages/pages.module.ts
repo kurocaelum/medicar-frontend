@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ModalNovaConsultaComponent } from './home/modal-nova-consulta/modal-nova-consulta.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    ModalNovaConsultaComponent
   ],
   exports: [
     LoginComponent

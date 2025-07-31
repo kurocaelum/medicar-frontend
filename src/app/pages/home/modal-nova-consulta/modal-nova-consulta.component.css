@@ -1,0 +1,17 @@
+.modal-container {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+::ng-deep .mat-mdc-dialog-title {
+  padding: 40px;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #444444 !important;
+}
+
+mat-form-field {
+  padding: auto;
+  margin: auto 8px;
+}

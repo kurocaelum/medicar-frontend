@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { ModalNovaConsultaComponent } from './modal-nova-consulta/modal-nova-consulta.component';
 
 // TODO interfaces definidas no angular para data e hora?
 export interface Consulta {
@@ -43,8 +45,25 @@ const ELEMENT_DATA: Consulta[] = [
 
 export class HomeComponent {
 
+  /* Tabela */
   displayedColumns: string[] = ['especialidade', 'profissional', 'data', 'hora', 'action'];
   dataSource = ELEMENT_DATA;
+
+  /* Dialog */
+  novaConsulta: Consulta = <Consulta>{}
+  // especialidadeTemp: string = ""
+  // profissionalTemp: string = ""
+  // dataTemp: string = ""
+  // horaTemp: string = ""
+  
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalNovaConsultaComponent, {
+      data: this.novaConsulta
+    })
+  }
 
   // consultas: Consulta[] = []
   // public consultas: Consulta[] = [
