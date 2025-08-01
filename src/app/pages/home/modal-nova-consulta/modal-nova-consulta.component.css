@@ -10,8 +10,3 @@
   font-weight: 700 !important;
   color: #444444 !important;
 }
-
-mat-form-field {
-  padding: auto;
-  margin: auto 8px;
-}
