@@ -10,3 +10,13 @@
   font-weight: 700 !important;
   color: #444444 !important;
 }
+
+::ng-deep .mat-mdc-select-placeholder {
+  color: #a8a8a8 !important;
+  font-weight: 400;
+}
+
+::ng-deep .mat-mdc-select-value-text {
+  color: #444444 !important;
+  font-weight: 400;
+}
