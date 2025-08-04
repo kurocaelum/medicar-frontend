@@ -8,7 +8,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatSelectModule} from '@angular/material/select'
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const MaterialComponents = [
   MatFormFieldModule,
@@ -18,7 +19,8 @@ const MaterialComponents = [
   MatCardModule,
   MatTableModule,
   MatDialogModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCheckboxModule
 ]
 
 @NgModule({

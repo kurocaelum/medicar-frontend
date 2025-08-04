@@ -1,0 +1,33 @@
+::ng-deep .mat-mdc-checkbox .mdc-checkbox {
+  height: 20px !important;
+  width: 20px !important;
+  border-radius: 4px;
+}
+
+::ng-deep .mat-mdc-checkbox .mdc-checkbox__background {
+  height: 20px !important;
+  width: 20px !important;
+  border: #a8a8a8 solid 1px;
+  border-radius: 4px;
+}
+
+::ng-deep .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(:focus):not([data-indeterminate=true])~.mdc-checkbox__background {
+  border-color: #a8a8a8;
+}
+
+::ng-deep .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:focus:enabled:not(:checked):not(:indeterminate):not([data-indeterminate=true])~.mdc-checkbox__background {
+  border-color: #49B4BB;
+}
+
+::ng-deep .mdc-checkbox__ripple {
+  background: 0 !important;
+}
+
+::ng-deep .mdc-form-field {
+  font-size: 13px;
+}
+
+::ng-deep .mdc-form-field label {
+  color: #a8a8a8 !important;
+  font-weight: 400;
+}
