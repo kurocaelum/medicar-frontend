@@ -1,3 +1,7 @@
+::ng-deep .mdc-checkbox {
+  padding-right: 0 !important;
+}
+
 ::ng-deep .mat-mdc-checkbox .mdc-checkbox {
   height: 20px !important;
   width: 20px !important;
@@ -9,6 +13,9 @@
   width: 20px !important;
   border: #a8a8a8 solid 1px;
   border-radius: 4px;
+
+  position: absolute;
+  left: 0 !important;
 }
 
 ::ng-deep .mat-mdc-checkbox .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not(:focus):not([data-indeterminate=true])~.mdc-checkbox__background {
@@ -30,4 +37,6 @@
 ::ng-deep .mdc-form-field label {
   color: #a8a8a8 !important;
   font-weight: 400;
+
+  padding-left: 0 !important;
 }
