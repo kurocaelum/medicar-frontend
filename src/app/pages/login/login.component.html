@@ -14,7 +14,7 @@
       <mat-form-field appearance="outline" class="small-field">
         <mat-label class="pr-2">Senha</mat-label>
         <input matInput [type]="hide() ? 'password' : 'text'" />
-        <button matSuffix class="mr-3 text-gray" (click)="hide()">
+        <button matSuffix class="mr-3 text-gray focus-visible:outline-primary" (click)="hide()">
           <mat-icon [fontIcon]="hide() ? 'visibility_off' : 'visibility'"></mat-icon>
         </button>
       </mat-form-field>
