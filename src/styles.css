@@ -61,6 +61,24 @@ mat-form-field {
   display: none !important;
 }
 
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  )
+  .mdc-notched-outline
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  )
+  .mdc-notched-outline
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
+    .mdc-text-field--focused
+  )
+  .mdc-notched-outline
+  .mdc-notched-outline__trailing {
+  border-color: #a8a8a8;
+}
+
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
   .mdc-notched-outline__leading,
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
@@ -85,5 +103,5 @@ mat-form-field {
   ):hover
   .mdc-notched-outline
   .mdc-notched-outline__trailing {
-  border-color: gray;
+  border-color: #49b4bb !important;
 }
