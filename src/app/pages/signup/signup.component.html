@@ -46,8 +46,12 @@
     </p>
     
     <p class="mt-10">
-      <app-button-secondary [label]="'Cancelar'"></app-button-secondary>
-      <app-button-primary [label]="'Confirmar'"></app-button-primary>
+      <a routerLink="/">
+        <app-button-secondary [label]="'Cancelar'"></app-button-secondary>
+      </a>
+      <a routerLink="/home">
+        <app-button-primary [label]="'Confirmar'"></app-button-primary>
+      </a>
     </p>
   </div>
 </div>
