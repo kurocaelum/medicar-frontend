@@ -109,3 +109,7 @@ mat-form-field {
 .small-field button:focus-visible {
   outline-color: #49B4BB;
 }
+
+a:focus-visible {
+  outline-color: #49B4BB;
+}
