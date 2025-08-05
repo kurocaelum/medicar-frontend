@@ -105,3 +105,7 @@ mat-form-field {
   .mdc-notched-outline__trailing {
   border-color: #49b4bb !important;
 }
+
+.small-field button:focus-visible {
+  outline-color: #49B4BB;
+}
