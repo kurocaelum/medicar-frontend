@@ -1,11 +1,11 @@
 <div class="flex h-screen justify-center items-center">
-  <div>
+  <form [formGroup]="loginForm" (submit)="onSubmit()">
     <img src="assets/logo.svg" alt="Logo medicar" class="mb-5">
 
     <p>
       <mat-form-field appearance="outline" class="small-field">
         <mat-label class="pr-5">Email ou Login</mat-label>
-        <input matInput>
+        <input matInput formControlName="login" required>
       </mat-form-field>
     </p>
     <br>
@@ -13,8 +13,8 @@
     <p>
       <mat-form-field appearance="outline" class="small-field">
         <mat-label class="pr-2">Senha</mat-label>
-        <input matInput [type]="hide() ? 'password' : 'text'" />
-        <button matSuffix class="mr-3 text-gray" (click)="hide()">
+        <input matInput formControlName="password" required [type]="hide() ? 'password' : 'text'" />
+        <button matSuffix class="mr-3 text-gray" type="button" (click)="hide()">
           <mat-icon [fontIcon]="hide() ? 'visibility_off' : 'visibility'"></mat-icon>
         </button>
       </mat-form-field>
@@ -26,10 +26,10 @@
       <a tabindex="-1" routerLink="signup">
         <app-button-secondary [label]="'Criar Conta'"></app-button-secondary>
       </a>
-      <a tabindex="-1" routerLink="home">
-        <app-button-primary [label]="'Acessar'"></app-button-primary>
+      <a tabindex="-1">
+        <app-button-primary [label]="'Acessar'" [disabled]="loginForm.invalid"></app-button-primary>
       </a>
     </p>
 
-  </div>
+  </form>
 </div>

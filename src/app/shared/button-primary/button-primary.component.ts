@@ -10,4 +10,7 @@ export class ButtonPrimaryComponent {
   @Input()
   label: string = ""
 
+  @Input()
+  disabled: boolean = true
+
 }

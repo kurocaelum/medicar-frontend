@@ -1,4 +1,5 @@
-<button class="text-lg h-10 rounded-lg font-bold border text-white 
+<button type="submit" [disabled]="disabled"
+class="text-lg h-10 rounded-lg font-bold border text-white 
 bg-primary hover:bg-primary-hover 
-focus:border-primary focus:outline-none focus:ring-0 
-focus-visible:outline-gray">{{ label }}</button>
+focus:border-primary focus:outline-none focus:ring-0 focus-visible:outline-gray
+disabled:cursor-not-allowed disabled:bg-primary-hover">{{ label }}</button>
