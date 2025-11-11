@@ -3,7 +3,7 @@
     <img src="assets/logo.svg" alt="Logo medicar" class="mb-5">
 
     <p>
-      <mat-form-field appearance="outline" class="small-field">
+      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-5">Email ou Login</mat-label>
         <input matInput formControlName="login" required>
       </mat-form-field>
@@ -11,7 +11,7 @@
     <br>
 
     <p>
-      <mat-form-field appearance="outline" class="small-field">
+      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Senha</mat-label>
         <input matInput formControlName="password" required [type]="hide() ? 'password' : 'text'" />
         <button matSuffix class="mr-3 text-gray" type="button" (click)="hide()">

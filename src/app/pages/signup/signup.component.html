@@ -5,7 +5,7 @@
     <p class="font-bold text-lg text-black mb-5">Crie sua conta</p>
 
     <p>
-      <mat-form-field appearance="outline" class="small-field">
+      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Nome</mat-label>
         <input matInput formControlName="nome" />
       </mat-form-field>
@@ -13,7 +13,7 @@
     <br />
 
     <p>
-      <mat-form-field appearance="outline" class="small-field">
+      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Email</mat-label>
         <input matInput formControlName="email" />
       </mat-form-field>
@@ -21,7 +21,7 @@
     <br />
 
     <p>
-      <mat-form-field appearance="outline" class="small-field">
+      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Senha</mat-label>
         <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
         <button matSuffix class="mr-3 text-gray" type="button" (click)="hide()">
@@ -34,7 +34,7 @@
     <br>
     
     <p>
-      <mat-form-field appearance="outline" class="small-field">
+      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-6">Confirmar Senha</mat-label>
         <input matInput formControlName="passwordConfirm" [type]="hideConfirm() ? 'password' : 'text'" />
         <button matSuffix class="mr-3 text-gray" type="button" (click)="hideConfirm()">

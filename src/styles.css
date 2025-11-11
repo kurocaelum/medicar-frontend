@@ -17,6 +17,10 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.ng-touched {
+  caret-color: #444444 !important;
+}
+
 mat-form-field {
   width: 400px;
 }
