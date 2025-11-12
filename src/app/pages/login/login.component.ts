@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,21 @@ export class LoginComponent {
     password: ['', Validators.required]
   })
 
-  constructor(private router: Router, private formBuilder: FormBuilder){}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ){}
 
   public onSubmit(){
     if(this.loginForm.valid)
-      this.router.navigate(['/home'])
+      this.authService.login({
+        username: this.loginForm.value.login,
+        password: this.loginForm.value.password
+      }).subscribe({
+        next: res => res,
+        error: err => err
+      })
   }
 
   public hide(): boolean {
