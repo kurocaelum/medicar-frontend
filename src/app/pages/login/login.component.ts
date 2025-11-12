@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -17,19 +18,25 @@ export class LoginComponent {
   })
 
   constructor(
-    private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ){}
 
   public onSubmit(){
-    if(this.loginForm.valid)
+    if(this.loginForm.valid) 
       this.authService.login({
         username: this.loginForm.value.login,
         password: this.loginForm.value.password
       }).subscribe({
-        next: res => res,
-        error: err => err
+        next: res => {
+          this.openSnackBar('Login bem sucedido!')
+          return res
+        },
+        error: err => {
+          this.openSnackBar('Falha no login.')
+          return err
+        }
       })
   }
 
@@ -41,6 +48,14 @@ export class LoginComponent {
 
     this.hidePassword = !this.hidePassword
     return false
+  }
+
+  public openSnackBar(message: string) {
+    this.snackBar.open(message, 'Fechar', {
+      duration: 4000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top'
+    })
   }
 
 }
