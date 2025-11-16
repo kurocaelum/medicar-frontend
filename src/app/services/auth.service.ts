@@ -35,4 +35,11 @@ export class AuthService {
       })
     )
   }
+
+  public logout() {
+    localStorage.removeItem('access_token')
+    return this.router.navigate([''])
+  }
+
+
 }

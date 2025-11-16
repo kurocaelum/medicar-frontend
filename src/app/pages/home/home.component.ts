@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ModalNovaConsultaComponent } from './modal-nova-consulta/modal-nova-consulta.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 // TODO interfaces definidas no angular para data e hora?
 export interface Consulta {
@@ -50,14 +51,12 @@ export class HomeComponent {
   dataSource = ELEMENT_DATA;
 
   /* Dialog */
-  novaConsulta: Consulta = <Consulta>{}
-  // especialidadeTemp: string = ""
-  // profissionalTemp: string = ""
-  // dataTemp: string = ""
-  // horaTemp: string = ""
-  
+  novaConsulta: Consulta = <Consulta>{}  
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthService
+  ) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalNovaConsultaComponent, {
@@ -65,32 +64,8 @@ export class HomeComponent {
     })
   }
 
-  // consultas: Consulta[] = []
-  // public consultas: Consulta[] = [
-  //   {
-  //     especialidade: 'Cardiologia',
-  //     profissional: 'Dr. Caio Carlos Ferreira',
-  //     data: '01/01/2020',
-  //     hora: '13:00'
-  //   },
-  //   {
-  //     especialidade: 'Cardiologia',
-  //     profissional: 'Dr. Caio Carlos Ferreira',
-  //     data: '01/01/2020',
-  //     hora: '13:00'
-  //   },
-  //   {
-  //     especialidade: 'Cardiologia',
-  //     profissional: 'Dr. Caio Carlos Ferreira',
-  //     data: '01/01/2020',
-  //     hora: '13:00'
-  //   },
-  //   {
-  //     especialidade: 'Cardiologia',
-  //     profissional: 'Dr. Caio Carlos Ferreira',
-  //     data: '01/01/2020',
-  //     hora: '13:00'
-  //   }
-  // ]
+  public logout(): void {
+    this.authService.logout()
+  }
 
 }
