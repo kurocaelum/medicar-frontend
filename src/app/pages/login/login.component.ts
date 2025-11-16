@@ -34,7 +34,7 @@ export class LoginComponent {
           return res
         },
         error: err => {
-          this.openSnackBar('Falha no login.')
+          this.openSnackBar(err)
           return err
         }
       })
