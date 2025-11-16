@@ -41,5 +41,18 @@ export class AuthService {
     return this.router.navigate([''])
   }
 
+  public register(payload: {username: string, password: string, email: string}): Observable<any> {
+    return this.http.post(`${this.url}/auth/register`, payload).pipe(
+      map(res => {
+        return this.router.navigate([''])
+      }),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
 
+        return throwError(() => "Falha ao conectar com servidor")
+      })
+    )
+  }
+  
 }
