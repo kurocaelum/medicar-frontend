@@ -67,8 +67,17 @@ mat-form-field {
   border-right: none !important;
 }
 
-.mat-mdc-form-field-subscript-wrapper {
-  display: none !important;
+/* .small-field .mat-mdc-form-field-subscript-wrapper {
+  display: none;
+} */
+
+mat-hint {
+  color: #A8A8A8;
+  font-size: 12px;
+}
+
+mat-error {
+  font-size: 12px;
 }
 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
@@ -96,6 +105,15 @@ mat-form-field {
 .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
   .mdc-notched-outline__trailing {
   border-color: #49b4bb;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused).mdc-text-field--invalid
+  .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused).mdc-text-field--invalid
+  .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled):not(.mdc-text-field--focused).mdc-text-field--invalid
+  .mdc-notched-outline__trailing {
+  border-color: red;
 }
 
 .mdc-text-field--outlined:not(.mdc-text-field--disabled):not(
