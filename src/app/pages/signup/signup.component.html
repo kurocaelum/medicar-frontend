@@ -3,33 +3,33 @@
     <img src="assets/logo.svg" alt="Logo medicar" class="mb-5" />
 
     <p class="font-bold text-lg text-black mb-5">Crie sua conta</p>
-
-    <p>
+    
+    <p class="mb-2">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Nome</mat-label>
         <input matInput formControlName="username" [errorStateMatcher]="matcher" />
-        <mat-error *ngIf="this.signupForm.controls['username'].hasError('required')">
+        <mat-error align="end" *ngIf="this.signupForm.controls['username'].hasError('required')">
           Campo <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
     </p>
-    <br />
 
-    <p>
+    
+    <p class="mb-2">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Email</mat-label>
         <input matInput formControlName="email" [type]="'email'" [errorStateMatcher]="matcher" />
-        <mat-error *ngIf="this.signupForm.controls['email'].hasError('email') && !this.signupForm.controls['email'].hasError('required')">
-          Insira um email válido
+        <mat-error align="end" *ngIf="this.signupForm.controls['email'].hasError('email') && !this.signupForm.controls['email'].hasError('required')">
+          Insira um email <strong>válido</strong>
         </mat-error>
-        <mat-error *ngIf="this.signupForm.controls['email'].hasError('required')">
+        <mat-error align="end" *ngIf="this.signupForm.controls['email'].hasError('required')">
           Campo <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
     </p>
-    <br />
 
-    <p>
+    
+    <p class="mb-2">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Senha</mat-label>
         <input matInput formControlName="password" [errorStateMatcher]="matcher" [type]="hide() ? 'password' : 'text'" />
@@ -38,12 +38,11 @@
             [fontIcon]="hide() ? 'visibility_off' : 'visibility'"
           ></mat-icon>
         </button>
-        <mat-error *ngIf="this.signupForm.controls['password'].hasError('required')">
+        <mat-error align="end" *ngIf="this.signupForm.controls['password'].hasError('required')">
           Campo <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
     </p>
-    <br>
     
     <p>
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
@@ -54,7 +53,7 @@
             [fontIcon]="hideConfirm() ? 'visibility_off' : 'visibility'"
           ></mat-icon>
         </button>
-        <mat-error *ngIf="this.signupForm.controls['passwordConfirm'].hasError('required')">
+        <mat-error align="end" *ngIf="this.signupForm.controls['passwordConfirm'].hasError('required')">
           Campo <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
