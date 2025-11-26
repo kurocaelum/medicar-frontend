@@ -1,3 +1,8 @@
+mat-checkbox {
+  position: relative;
+  top: -20px;
+}
+
 ::ng-deep .mdc-checkbox {
   padding-right: 0 !important;
 }

@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar} from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 
+export class FormErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -12,8 +19,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
 
   hidePassword: boolean = true
+  matcher = new FormErrorStateMatcher()
+
   loginForm: FormGroup = this.formBuilder.group({
-    login: ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required]
   })
 
@@ -26,7 +35,7 @@ export class LoginComponent {
   public onSubmit(){
     if(this.loginForm.valid) 
       this.authService.login({
-        username: this.loginForm.value.login,
+        username: this.loginForm.value.username,
         password: this.loginForm.value.password
       }).subscribe({
         next: res => {

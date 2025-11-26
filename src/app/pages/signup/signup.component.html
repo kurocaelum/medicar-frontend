@@ -4,7 +4,7 @@
 
     <p class="font-bold text-lg text-black mb-5">Crie sua conta</p>
     
-    <p class="mb-2">
+    <p class="mb-1">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Nome</mat-label>
         <input matInput formControlName="username" [errorStateMatcher]="matcher" />
@@ -15,7 +15,7 @@
     </p>
 
     
-    <p class="mb-2">
+    <p class="mb-1">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Email</mat-label>
         <input matInput formControlName="email" [type]="'email'" [errorStateMatcher]="matcher" />
@@ -29,7 +29,7 @@
     </p>
 
     
-    <p class="mb-2">
+    <p class="mb-1">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Senha</mat-label>
         <input matInput formControlName="password" [errorStateMatcher]="matcher" [type]="hide() ? 'password' : 'text'" />
@@ -59,7 +59,7 @@
       </mat-form-field>
     </p>
     
-    <p class="mt-10">
+    <p class="mt-5">
       <a tabindex="-1" routerLink="/">
         <app-button-secondary [label]="'Cancelar'"></app-button-secondary>
       </a>
