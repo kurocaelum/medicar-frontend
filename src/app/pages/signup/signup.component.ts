@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
@@ -7,9 +7,19 @@ import { AuthService } from 'src/app/services/auth.service';
 export class FormErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
+
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
+
+export class ValidParentStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+
+    return !!(control && control.parent && control.parent.invalid && (control.dirty || control.touched || isSubmitted))
+  }
+}
+
 
 @Component({
   selector: 'app-signup',
@@ -20,20 +30,31 @@ export class SignupComponent {
 
   hidePassword: boolean = true
   hidePasswordConfirm: boolean = true
-  matcher = new FormErrorStateMatcher()
+  
+  formMatcher = new FormErrorStateMatcher()
+  parentMatcher = new ValidParentStateMatcher()
   
   signupForm: FormGroup = this.formBuilder.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
-    passwordConfirm: ['', Validators.required]
-  })
+    passwordGroup: this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      passwordConfirm: ['', Validators.required]
+    }, { validator: this.passwordMatchValidator })
+  },)
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar
   ){}
+
+  passwordMatchValidator(group: AbstractControl) {
+    const password = group.get('password')?.value
+    const passwordConfirm = group.get('passwordConfirm')?.value
+
+    return password === passwordConfirm ? null : { mismatch: true }
+  }
 
   public onSubmit(){
     if(this.signupForm.valid)
@@ -47,7 +68,8 @@ export class SignupComponent {
           return res
         },
         error: err => {
-          this.openSnackBar(err)
+          console.log(err)
+          this.openSnackBar('Erro no cadastro.')
           return err
         }
       })

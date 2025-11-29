@@ -7,7 +7,7 @@
     <p class="mb-1">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Nome</mat-label>
-        <input matInput formControlName="username" [errorStateMatcher]="matcher" />
+        <input matInput formControlName="username" [errorStateMatcher]="formMatcher" />
         <mat-error align="end" *ngIf="this.signupForm.controls['username'].hasError('required')">
           Campo <strong>obrigatório</strong>
         </mat-error>
@@ -18,7 +18,7 @@
     <p class="mb-1">
       <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
         <mat-label class="pr-2">Email</mat-label>
-        <input matInput formControlName="email" [type]="'email'" [errorStateMatcher]="matcher" />
+        <input matInput formControlName="email" [type]="'email'" [errorStateMatcher]="formMatcher" />
         <mat-error align="end" *ngIf="this.signupForm.controls['email'].hasError('email') && !this.signupForm.controls['email'].hasError('required')">
           Insira um email <strong>válido</strong>
         </mat-error>
@@ -28,36 +28,40 @@
       </mat-form-field>
     </p>
 
-    
-    <p class="mb-1">
-      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
-        <mat-label class="pr-2">Senha</mat-label>
-        <input matInput formControlName="password" [errorStateMatcher]="matcher" [type]="hide() ? 'password' : 'text'" />
-        <button matSuffix class="mr-3 text-gray" type="button" (click)="hide()">
-          <mat-icon
-            [fontIcon]="hide() ? 'visibility_off' : 'visibility'"
-          ></mat-icon>
-        </button>
-        <mat-error align="end" *ngIf="this.signupForm.controls['password'].hasError('required')">
-          Campo <strong>obrigatório</strong>
-        </mat-error>
-      </mat-form-field>
-    </p>
-    
-    <p>
-      <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
-        <mat-label class="pr-6">Confirmar Senha</mat-label>
-        <input matInput formControlName="passwordConfirm" [errorStateMatcher]="matcher" [type]="hideConfirm() ? 'password' : 'text'" />
-        <button matSuffix class="mr-3 text-gray" type="button" (click)="hideConfirm()">
-          <mat-icon
-            [fontIcon]="hideConfirm() ? 'visibility_off' : 'visibility'"
-          ></mat-icon>
-        </button>
-        <mat-error align="end" *ngIf="this.signupForm.controls['passwordConfirm'].hasError('required')">
-          Campo <strong>obrigatório</strong>
-        </mat-error>
-      </mat-form-field>
-    </p>
+    <div formGroupName="passwordGroup">
+      <p class="mb-1">
+        <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
+          <mat-label class="pr-2">Senha</mat-label>
+          <input matInput formControlName="password" [errorStateMatcher]="formMatcher" [type]="hide() ? 'password' : 'text'" />
+          <button matSuffix class="mr-3 text-gray" type="button" (click)="hide()">
+            <mat-icon
+              [fontIcon]="hide() ? 'visibility_off' : 'visibility'"
+            ></mat-icon>
+          </button>
+          <mat-error align="end" *ngIf="this.signupForm.get('passwordGroup.password')?.hasError('required')">
+            Campo <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error align="end" *ngIf="this.signupForm.get('passwordGroup.password')?.hasError('minlength') ">
+            Senha deve conter ao menos 6 caracteres
+          </mat-error>
+        </mat-form-field>
+      </p>
+      
+      <p>
+        <mat-form-field appearance="outline" class="small-field" [hideRequiredMarker]="true">
+          <mat-label class="pr-6">Confirmar Senha</mat-label>
+          <input matInput formControlName="passwordConfirm" [errorStateMatcher]="parentMatcher" [type]="hideConfirm() ? 'password' : 'text'" />
+          <button matSuffix class="mr-3 text-gray" type="button" (click)="hideConfirm()">
+            <mat-icon
+              [fontIcon]="hideConfirm() ? 'visibility_off' : 'visibility'"
+            ></mat-icon>
+          </button>
+          <mat-error align="end">
+            Senhas inseridas devem ser iguais
+          </mat-error>
+        </mat-form-field>
+      </p>
+    </div>
     
     <p class="mt-5">
       <a tabindex="-1" routerLink="/">
