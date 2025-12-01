@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
@@ -12,7 +13,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   public login(payload: {username: string, password: string}): Observable<any> {
@@ -53,6 +55,15 @@ export class AuthService {
         return throwError(() => "Falha ao conectar com servidor")
       })
     )
+  }
+
+  public openSnackBar(message: string) {
+    this.snackBar.open(message, 'Fechar', {
+      duration: 4000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      panelClass: ['login-snackbar']
+    })
   }
   
 }

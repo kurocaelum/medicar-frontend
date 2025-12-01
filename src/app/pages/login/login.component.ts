@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatSnackBar} from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 
 export class FormErrorStateMatcher implements ErrorStateMatcher {
@@ -29,7 +28,6 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private snackBar: MatSnackBar
   ){}
 
   public onSubmit(){
@@ -39,11 +37,12 @@ export class LoginComponent {
         password: this.loginForm.value.password
       }).subscribe({
         next: res => {
-          this.openSnackBar('Login bem sucedido!')
+          this.authService.openSnackBar('Login bem sucedido!')
           return res
         },
         error: err => {
-          this.openSnackBar(err)
+          console.log(err)
+          this.authService.openSnackBar('Erro no login.')
           return err
         }
       })
@@ -57,15 +56,6 @@ export class LoginComponent {
 
     this.hidePassword = !this.hidePassword
     return false
-  }
-
-  public openSnackBar(message: string) {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 4000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      panelClass: ['login-snackbar']
-    })
   }
 
 }

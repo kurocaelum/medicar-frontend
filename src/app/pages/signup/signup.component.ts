@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 
 export class FormErrorStateMatcher implements ErrorStateMatcher {
@@ -46,7 +45,6 @@ export class SignupComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private snackBar: MatSnackBar
   ){}
 
   passwordMatchValidator(group: AbstractControl) {
@@ -96,14 +94,7 @@ export class SignupComponent {
   }
 
   public openSnackBar(message: string) {
-    // this.authService.openSnackBar(message)
-
-    this.snackBar.open(message, 'Fechar', {
-      duration: 4000,
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      panelClass: ['login-snackbar']
-    })
+    this.authService.openSnackBar(message)
   }
 
 }
