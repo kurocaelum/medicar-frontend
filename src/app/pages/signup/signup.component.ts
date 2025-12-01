@@ -60,7 +60,7 @@ export class SignupComponent {
     if(this.signupForm.valid)
       this.authService.register({
         username: this.signupForm.value.username,
-        password: this.signupForm.value.password,
+        password: this.signupForm.value.passwordGroup.password,
         email: this.signupForm.value.email
       }).subscribe({
         next: res => {
@@ -96,6 +96,8 @@ export class SignupComponent {
   }
 
   public openSnackBar(message: string) {
+    // this.authService.openSnackBar(message)
+
     this.snackBar.open(message, 'Fechar', {
       duration: 4000,
       horizontalPosition: 'right',
