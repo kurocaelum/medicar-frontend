@@ -4,15 +4,18 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginGuard } from './shared/guards/login.guard';
+import { UserAuthenticatedGuard } from './shared/guards/user-authenticated.guard';
 
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [UserAuthenticatedGuard]
   },
   {
     path: "signup",
-    component: SignupComponent
+    component: SignupComponent,
+    canActivate: [UserAuthenticatedGuard]
   },
   {
     path: "home",
