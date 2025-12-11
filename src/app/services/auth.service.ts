@@ -67,6 +67,15 @@ export class AuthService {
     return !jwtHelper.isTokenExpired(token)
   }
 
+  public getUsernameFromToken() {
+    if(this.isAuthenticated()) {
+      const token = localStorage.getItem('access_token')
+      const jwtHelper = new JwtHelperService()
+      return jwtHelper.decodeToken(token!).sub
+    }
+    return null
+  }
+
   public openSnackBar(message: string) {
     this.snackBar.open(message, 'Fechar', {
       duration: 4000,

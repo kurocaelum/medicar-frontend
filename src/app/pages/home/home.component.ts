@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ModalNovaConsultaComponent } from './modal-nova-consulta/modal-nova-consulta.component';
 import { AuthService } from 'src/app/services/auth.service';
@@ -44,19 +44,25 @@ const ELEMENT_DATA: Consulta[] = [
   styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   /* Tabela */
   displayedColumns: string[] = ['especialidade', 'profissional', 'data', 'hora', 'action'];
   dataSource = ELEMENT_DATA;
 
   /* Dialog */
-  novaConsulta: Consulta = <Consulta>{}  
+  novaConsulta: Consulta = <Consulta>{}
+
+  username!: String
 
   constructor(
     public dialog: MatDialog,
     private authService: AuthService
   ) {}
+
+  ngOnInit(): void {
+    this.username = this.authService.getUsernameFromToken()
+  }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalNovaConsultaComponent, {
