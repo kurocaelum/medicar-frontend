@@ -17,22 +17,22 @@
       <table mat-table [dataSource]="dataSource" class="striped-table">
         <ng-container matColumnDef="especialidade">
           <th mat-header-cell *matHeaderCellDef>ESPECIALIDADE</th>
-          <td mat-cell *matCellDef="let element">{{element.especialidade}}</td>
+          <td mat-cell *matCellDef="let consulta">{{consulta.medico.especialidade.nome}}</td>
         </ng-container>
 
         <ng-container matColumnDef="profissional">
           <th mat-header-cell *matHeaderCellDef>PROFISSIONAL</th>
-          <td mat-cell *matCellDef="let element">{{element.profissional}}</td>
+          <td mat-cell *matCellDef="let consulta">{{consulta.medico.nome}}</td>
         </ng-container>
 
         <ng-container matColumnDef="data">
           <th mat-header-cell *matHeaderCellDef>DATA</th>
-          <td mat-cell *matCellDef="let element">{{element.data}}</td>
+          <td mat-cell *matCellDef="let consulta">{{consulta.dia}}</td>
         </ng-container>
 
         <ng-container matColumnDef="hora">
           <th mat-header-cell *matHeaderCellDef>HORA</th>
-          <td mat-cell *matCellDef="let element">{{element.hora}}</td>
+          <td mat-cell *matCellDef="let consulta">{{consulta.horario}}</td>
         </ng-container>
         
         <ng-container matColumnDef="action">

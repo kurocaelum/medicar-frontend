@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Consulta, User } from '../shared/interfaces/entities';
 
 @Injectable({
   providedIn: 'root'
@@ -67,12 +68,44 @@ export class AuthService {
     return !jwtHelper.isTokenExpired(token)
   }
 
-  public getUsernameFromToken() {
+  public getUserIdFromToken() {
     if(this.isAuthenticated()) {
       const token = localStorage.getItem('access_token')
       const jwtHelper = new JwtHelperService()
       return jwtHelper.decodeToken(token!).sub
     }
+    return ""
+  }
+
+  public getUserByUserId(userId: string): Observable<User> | null {
+    if(this.isAuthenticated()) {
+      return this.http.get<User>(`${this.url}/users/${userId}`).pipe(
+        map(res => res),
+        catchError(e => {
+          if(e.error.message)
+            return throwError(() => e.error.message)
+
+          return throwError(() => "Falha ao obter ID de usuário.")
+        })
+      )
+    }
+
+    return null
+  }
+
+  public getConsultasByUserId(userId: string): Observable<Consulta[]> | null {
+    if(this.isAuthenticated()) {
+      return this.http.get<Consulta[]>(`${this.url}/consultas?user=${userId}`).pipe(
+        map(res => res),
+        catchError(e => {
+          if(e.error.message)
+            return throwError(() => e.error.message)
+
+          return throwError(() => "Falha ao obter lista de consultas.")
+        })
+      )
+    }
+
     return null
   }
 

@@ -1,42 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ModalNovaConsultaComponent } from './modal-nova-consulta/modal-nova-consulta.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { Consulta } from 'src/app/shared/interfaces/entities';
+import { DataSource } from '@angular/cdk/collections';
+import { Observable, ReplaySubject } from 'rxjs';
 
-// TODO interfaces definidas no angular para data e hora?
-export interface Consulta {
+export interface ConsultaTemp {
   especialidade: string,
   profissional: string,
   data: string,
   hora: string
 }
-
-const ELEMENT_DATA: Consulta[] = [
-  {
-    especialidade: 'Cardiologia',
-    profissional: 'Dr. Caio Carlos Ferreira',
-    data: '01/01/2020',
-    hora: '13:00'
-  },
-  {
-    especialidade: 'Cardiologia',
-    profissional: 'Dr. Caio Carlos Ferreira',
-    data: '01/01/2020',
-    hora: '13:00'
-  },
-  {
-    especialidade: 'Cardiologia',
-    profissional: 'Dr. Caio Carlos Ferreira',
-    data: '01/01/2020',
-    hora: '13:00'
-  },
-  {
-    especialidade: 'Cardiologia',
-    profissional: 'Dr. Caio Carlos Ferreira',
-    data: '01/01/2020',
-    hora: '13:00'
-  }
-]
 
 @Component({
   selector: 'app-home',
@@ -46,14 +21,17 @@ const ELEMENT_DATA: Consulta[] = [
 
 export class HomeComponent implements OnInit {
 
-  /* Tabela */
+  userId!: string
+  username: string = ""
+  consultas: Consulta[] = []
+
+  /* Tabela */  
   displayedColumns: string[] = ['especialidade', 'profissional', 'data', 'hora', 'action'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new ConsultaDataSource([])
 
   /* Dialog */
-  novaConsulta: Consulta = <Consulta>{}
-
-  username!: String
+  // TODO adaptar dialog para interface Consulta
+  novaConsulta: ConsultaTemp = <ConsultaTemp>{}
 
   constructor(
     public dialog: MatDialog,
@@ -61,7 +39,16 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.username = this.authService.getUsernameFromToken()
+    this.userId = this.authService.getUserIdFromToken()
+    this.authService.getUserByUserId(this.userId)?.subscribe(
+      res => this.username = res.username
+    )
+    this.authService.getConsultasByUserId(this.userId)?.subscribe(
+      res => {
+        this.consultas = res
+        this.dataSource.setData(this.consultas)
+      }
+    )
   }
 
   openDialog(): void {
@@ -72,6 +59,26 @@ export class HomeComponent implements OnInit {
 
   public logout(): void {
     this.authService.logout()
+  }
+
+}
+
+class ConsultaDataSource extends DataSource<Consulta> {
+  private dataStream = new ReplaySubject<Consulta[]>()
+
+  constructor(initialData: Consulta[]) {
+    super()
+    this.setData(initialData)
+  }
+
+  connect(): Observable<Consulta[]> {
+    return this.dataStream;
+  }
+
+  disconnect() {}
+
+  setData(data: Consulta[]) {
+    this.dataStream.next(data)
   }
 
 }
