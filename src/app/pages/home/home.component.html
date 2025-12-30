@@ -37,8 +37,8 @@
         
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef></th>
-          <td mat-cell *matCellDef="let element"> 
-            <a routerLink="/home" class="text-primary flex items-center justify-center">
+          <td mat-cell *matCellDef="let consulta"> 
+            <a routerLink="/home" class="text-primary flex items-center justify-center" (click)="desmarcarConsulta(consulta.id)">
               <mat-icon [fontIcon]="'close_small'" class="m-2"></mat-icon>
               Desmarcar
             </a> 

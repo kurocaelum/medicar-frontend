@@ -61,6 +61,12 @@ export class HomeComponent implements OnInit {
     this.authService.logout()
   }
 
+  public desmarcarConsulta(consultaId: string) {
+    this.authService.desmarcarConsulta(consultaId).subscribe(
+      res => res
+    )
+  }
+
 }
 
 class ConsultaDataSource extends DataSource<Consulta> {

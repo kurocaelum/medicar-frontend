@@ -109,6 +109,18 @@ export class AuthService {
     return null
   }
 
+  public desmarcarConsulta(consultaId: string): Observable<any> {
+    return this.http.delete(`${this.url}/consultas/${consultaId}`).pipe(
+      map(res => window.location.reload()),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha ao desmarcar consulta.")
+      })
+    )
+  }
+
   public openSnackBar(message: string) {
     this.snackBar.open(message, 'Fechar', {
       duration: 4000,
