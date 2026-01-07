@@ -1,47 +1,46 @@
 <div class="modal-container">
   <h1 mat-dialog-title>Nova Consulta</h1>
-  <div mat-dialog-content>
-    <mat-form-field appearance="outline" class="pb-4 small-field">
-      <mat-select placeholder="Especialidade">
-        <mat-option value="Pediatria">Pediatria</mat-option>
-        <mat-option value="Pediatria">Pediatria</mat-option>
-        <mat-option value="Pediatria">Pediatria</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
+  <form [formGroup]="novaConsultaForm">
+    <div mat-dialog-content>
+      <mat-form-field appearance="outline" class="pb-4 small-field">
+        <mat-select placeholder="Especialidade" formControlName="especialidade" required>
+          <mat-option (click)="resetSelect('especialidade')">--</mat-option>
+          <mat-option (click)="updateInputs()" *ngFor="let option of especialidades" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
 
-    <mat-form-field appearance="outline" class="pb-4 small-field">
-      <mat-select placeholder="Médico">
-        <mat-option value="Dr. Caio Carlos Ferreira">Dr. Caio Carlos Ferreira</mat-option>
-        <mat-option value="Dr. Caio Carlos Ferreira">Dr. Caio Carlos Ferreira</mat-option>
-        <mat-option value="Dr. Caio Carlos Ferreira">Dr. Caio Carlos Ferreira</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
+      <mat-form-field appearance="outline" class="pb-4 small-field">
+        <mat-select placeholder="Médico" formControlName="medico" required>
+          <mat-option (click)="resetSelect('medico')">--</mat-option>
+          <mat-option (click)="updateInputs()" *ngFor="let option of medicos" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
 
-    <mat-form-field appearance="outline" class="pb-4 small-field">
-      <mat-select placeholder="Data">
-        <mat-option value="01/01/2001">01/01/2001</mat-option>
-        <mat-option value="01/01/2001">01/01/2001</mat-option>
-        <mat-option value="01/01/2001">01/01/2001</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
+      <mat-form-field appearance="outline" class="pb-4 small-field">
+        <mat-select placeholder="Data" formControlName="data" required>
+          <mat-option (click)="resetSelect('data')">--</mat-option>
+          <mat-option (click)="updateInputs()" *ngFor="let option of datas" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
 
-    <mat-form-field appearance="outline" class="small-field">
-      <mat-select placeholder="Hora">
-        <mat-option value="13:00">13:00</mat-option>
-        <mat-option value="13:00">13:00</mat-option>
-        <mat-option value="13:00">13:00</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
+      <mat-form-field appearance="outline" class="small-field">
+        <mat-select placeholder="Hora" formControlName="hora" required>
+          <mat-option (click)="resetSelect('hora')">--</mat-option>
+          <mat-option (click)="updateInputs()" *ngFor="let option of horas" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
 
-  </div>
-  <div mat-dialog-actions [align]="'center'">
-    <p class="mt-8 mb-5">
-      <app-button-secondary mat-dialog-close [label]="'Cancelar'"></app-button-secondary>
-      <app-button-primary mat-dialog-close [label]="'Confirmar'"></app-button-primary>
-    </p>
-  </div>
+    </div>
+    <div mat-dialog-actions [align]="'center'">
+      <p class="mt-8 mb-5">
+        <app-button-secondary mat-dialog-close [label]="'Cancelar'"></app-button-secondary>
+        <!-- TODO FIX button Confirmar disabled apesar de todos os selects preenchidos? -->
+        <app-button-primary mat-dialog-close [label]="'Confirmar'"></app-button-primary>
+      </p>
+    </div>
+  </form>
 </div>

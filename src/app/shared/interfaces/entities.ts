@@ -1,4 +1,3 @@
-// TODO interfaces definidas no angular para data e hora?
 export interface Consulta {
   id: number
   dia: string
