@@ -29,3 +29,10 @@ export interface User {
   credentialsNonExpired: boolean
   accountNonLocked: boolean
 }
+
+export interface Agenda {
+  id: number
+  medico: Medico
+  dia: string
+  horarios: string[]
+}

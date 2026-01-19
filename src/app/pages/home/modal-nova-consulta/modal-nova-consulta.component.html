@@ -3,33 +3,33 @@
   <form [formGroup]="novaConsultaForm">
     <div mat-dialog-content>
       <mat-form-field appearance="outline" class="pb-4 small-field">
-        <mat-select placeholder="Especialidade" formControlName="especialidade" required>
-          <mat-option (click)="resetSelect('especialidade')">--</mat-option>
-          <mat-option (click)="updateInputs()" *ngFor="let option of especialidades" [value]="option">{{ option }}</mat-option>
+        <mat-select (selectionChange)="changeEspecialidade()" placeholder="Especialidade" formControlName="especialidade" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let especialidade of especialidades" [value]="especialidade.nome">{{ especialidade.nome }}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
 
       <mat-form-field appearance="outline" class="pb-4 small-field">
-        <mat-select placeholder="Médico" formControlName="medico" required>
-          <mat-option (click)="resetSelect('medico')">--</mat-option>
-          <mat-option (click)="updateInputs()" *ngFor="let option of medicos" [value]="option">{{ option }}</mat-option>
+        <mat-select (selectionChange)="changeMedico()" placeholder="Médico" formControlName="medico" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let medico of medicos" [value]="medico.nome">{{ medico.nome }}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
 
       <mat-form-field appearance="outline" class="pb-4 small-field">
-        <mat-select placeholder="Data" formControlName="data" required>
-          <mat-option (click)="resetSelect('data')">--</mat-option>
-          <mat-option (click)="updateInputs()" *ngFor="let option of datas" [value]="option">{{ option }}</mat-option>
+        <mat-select (selectionChange)="changeData()" placeholder="Data" formControlName="data" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let data of datas" [value]="data.dia">{{ data.dia }}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>
 
       <mat-form-field appearance="outline" class="small-field">
         <mat-select placeholder="Hora" formControlName="hora" required>
-          <mat-option (click)="resetSelect('hora')">--</mat-option>
-          <mat-option (click)="updateInputs()" *ngFor="let option of horas" [value]="option">{{ option }}</mat-option>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let hora of horas" [value]="hora">{{ hora }}</mat-option>
         </mat-select>
       </mat-form-field>
       <br>

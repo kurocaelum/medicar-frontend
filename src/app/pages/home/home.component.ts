@@ -29,10 +29,6 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['especialidade', 'profissional', 'data', 'hora', 'action'];
   dataSource = new ConsultaDataSource([])
 
-  /* Dialog */
-  // TODO adaptar dialog para interface Consulta
-  novaConsulta: ConsultaTemp = <ConsultaTemp>{}
-
   constructor(
     public dialog: MatDialog,
     private authService: AuthService
@@ -52,9 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ModalNovaConsultaComponent, {
-      data: this.novaConsulta
-    })
+    const dialogRef = this.dialog.open(ModalNovaConsultaComponent)
   }
 
   public logout(): void {

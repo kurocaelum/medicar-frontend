@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { catchError, map, Observable, throwError } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Consulta, User } from '../shared/interfaces/entities';
+import { Agenda, Consulta, Especialidade, Medico, User } from '../shared/interfaces/entities';
 
 @Injectable({
   providedIn: 'root'
@@ -118,6 +118,42 @@ export class AuthService {
 
         return throwError(() => "Falha ao desmarcar consulta.")
       })
+    )
+  }
+  
+  public getEspecialidades(): Observable<Especialidade[]> {
+    return this.http.get<Especialidade[]>(`${this.url}/especialidades`).pipe(
+      map(res => res),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha na busca de especialidades.")
+      }) 
+    )
+  }
+
+  public getMedicosByEspecialidade(especialidadeId: number | undefined): Observable<Medico[]> {
+    return this.http.get<Medico[]>(`${this.url}/medicos?especialidade=${especialidadeId}`).pipe(
+      map(res => res),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha na busca de medicos.")
+      }) 
+    )
+  }
+  
+  public getAgendasByMedico(medicoId: number | undefined): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(`${this.url}/agendas?medico=${medicoId}`).pipe(
+      map(res => res),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha na busca de agendas.")
+      }) 
     )
   }
 
