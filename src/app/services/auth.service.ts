@@ -120,6 +120,22 @@ export class AuthService {
       })
     )
   }
+
+  public marcarConsulta(agenda_id: number, horario: string): Observable<any> {    
+    const user_id = this.getUserIdFromToken()
+    const payload = { agenda_id, horario, user_id }
+
+    return this.http.put(`${this.url}/consultas`, payload).pipe(
+      map(res => window.location.reload()),
+      catchError(e => {
+        if(e.error.message)
+          return throwError(() => e.error.message)
+
+        return throwError(() => "Falha ao marcar consulta.")
+      })
+    )
+
+  }
   
   public getEspecialidades(): Observable<Especialidade[]> {
     return this.http.get<Especialidade[]>(`${this.url}/especialidades`).pipe(

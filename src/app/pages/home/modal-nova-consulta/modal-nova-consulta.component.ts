@@ -42,6 +42,33 @@ export class ModalNovaConsultaComponent {
     this.novaConsultaForm.controls[select].disable()
   }
 
+  loadEspecialidades() {
+    this.authService.getEspecialidades().subscribe(
+      res => { this.especialidades = res }
+    )
+  }
+
+  loadMedicos() {
+    const especialidadeOption = this.especialidades.find(option => option.nome.includes(this.novaConsultaForm.controls['especialidade'].value))
+    
+    this.authService.getMedicosByEspecialidade(especialidadeOption?.id).subscribe(
+      res => { this.medicos = res }
+    )
+  }
+  
+  loadDatas() {
+    const medicoOption = this.medicos.find(option => option.nome.includes(this.novaConsultaForm.controls['medico'].value))
+    
+    this.authService.getAgendasByMedico(medicoOption?.id).subscribe(
+      res => { this.datas = res }
+    )
+  }
+
+  loadHorarios() {
+    const dataOption = this.datas.find(option => option.dia.includes(this.novaConsultaForm.controls['data'].value))
+    this.horas = dataOption?.horarios
+  }
+
   public changeEspecialidade() {    
     this.disableSelect('medico')
     this.disableSelect('data')
@@ -71,36 +98,17 @@ export class ModalNovaConsultaComponent {
       this.loadHorarios()
     }    
   }
-  
-  loadEspecialidades() {
-    this.authService.getEspecialidades().subscribe(
-      res => { this.especialidades = res }
-    )
-  }
-
-  loadMedicos() {
-    const especialidadeOption = this.especialidades.find(option => option.nome.includes(this.novaConsultaForm.controls['especialidade'].value))
-    
-    this.authService.getMedicosByEspecialidade(especialidadeOption?.id).subscribe(
-      res => { this.medicos = res }
-    )
-  }
-  
-  loadDatas() {
-    const medicoOption = this.medicos.find(option => option.nome.includes(this.novaConsultaForm.controls['medico'].value))
-    
-    this.authService.getAgendasByMedico(medicoOption?.id).subscribe(
-      res => { this.datas = res }
-    )
-  }
-
-  loadHorarios() {
-    const dataOption = this.datas.find(option => option.dia.includes(this.novaConsultaForm.controls['data'].value))
-    this.horas = dataOption?.horarios
-  }
 
   public onSubmit() {
-    this.authService.openSnackBar("Consulta mock")
+    const dataOption = this.datas.find(option => option.dia.includes(this.novaConsultaForm.controls['data'].value))
+    const horarioOption = this.novaConsultaForm.controls['hora'].value
+    
+    console.log("Agenda " + dataOption?.id)
+    console.log("Horario " + horarioOption)
+
+    this.authService.marcarConsulta(dataOption!.id, horarioOption).subscribe(
+      res => res
+    )
   }
 
 }
