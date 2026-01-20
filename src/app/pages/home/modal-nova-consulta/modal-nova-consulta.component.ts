@@ -99,4 +99,8 @@ export class ModalNovaConsultaComponent {
     this.horas = dataOption?.horarios
   }
 
+  public onSubmit() {
+    this.authService.openSnackBar("Consulta mock")
+  }
+
 }
