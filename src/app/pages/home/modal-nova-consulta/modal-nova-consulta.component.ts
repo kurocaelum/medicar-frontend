@@ -42,9 +42,7 @@ export class ModalNovaConsultaComponent {
     this.novaConsultaForm.controls[select].disable()
   }
 
-  public changeEspecialidade() {
-    console.log("especialidade " + this.novaConsultaForm.controls['especialidade'].value)
-    
+  public changeEspecialidade() {    
     this.disableSelect('medico')
     this.disableSelect('data')
     this.disableSelect('hora')
@@ -55,9 +53,7 @@ export class ModalNovaConsultaComponent {
     }    
   }
 
-  public changeMedico() {
-    console.log("medico " + this.novaConsultaForm.controls['medico'].value)
-    
+  public changeMedico() {    
     this.disableSelect('data')
     this.disableSelect('hora')
     
@@ -67,9 +63,7 @@ export class ModalNovaConsultaComponent {
     }    
   }
   
-  public changeData() {
-    console.log("data " + this.novaConsultaForm.controls['data'].value)
-    
+  public changeData() {    
     this.disableSelect('hora')
     
     if (this.novaConsultaForm.controls['data'].value != undefined) {
