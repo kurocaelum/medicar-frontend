@@ -1,6 +1,7 @@
-# MedicarFrontend
+# Medicar-Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.  
+[Backend](https://github.com/kurocaelum/medicar-backend) implemented separately as a Spring Boot application.
 
 ## Development server
 
